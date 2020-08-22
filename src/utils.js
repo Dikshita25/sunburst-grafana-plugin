@@ -42,6 +42,6 @@ export const filterDataForSunburst = (data) => {
     return soFar;
   }, []);
 
-  const endIndex = allColumnsData.length ? allColumnsData[0].values.length - 1 : 0;
+  const endIndex = allColumnsData.length ? allColumnsData[0].values.length : 0;
   return createStructuredDataForSunburst(allColumnsData, [], 0, endIndex);
 };
