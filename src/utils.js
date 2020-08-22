@@ -5,19 +5,14 @@
  * @param {*} startIndex 
  * @param {*} endIndex 
  */
-const createStructuredDataForSunburst = (
-  dataTobeIterateOn: any,
-  finalData: any,
-  startIndex: any,
-  endIndex: any
-): any => {
+const createStructuredDataForSunburst = (dataTobeIterateOn, finalData, startIndex, endIndex) => {
   if (startIndex === endIndex) {
     return finalData;
   }
 
-  const currentItem: any = {};
+  const currentItem = {};
 
-  dataTobeIterateOn.forEach((element: any) => {
+  dataTobeIterateOn.forEach((element) => {
     if (element.name == 'count') {
       currentItem.value = element.values.buffer[startIndex];
     } else {
@@ -35,8 +30,8 @@ const createStructuredDataForSunburst = (
  * This function takes data object from influxDB and passeds for required sunburnt chart supported format.
  * @param {*} data 
  */
-export const filterDataForSunburst = (data: any) => {
-  const allColumnsData = data.series.reduce((soFar: any, value: any) => {
+export const filterDataForSunburst = (data) => {
+  const allColumnsData = data.series.reduce((soFar, value) => {
     const nameSplit = value.name.split('.');
     const name = nameSplit.length === 2 ? nameSplit[1] : nameSplit[0];
     soFar.push({
