@@ -23,5 +23,9 @@
   },
   "engines": {
     "node": ">=12 <13"
+  },
+  "dependencies": {
+    "fusioncharts": "3.15.2",
+    "react-fusioncharts": "3.1.2"
   }
 }
