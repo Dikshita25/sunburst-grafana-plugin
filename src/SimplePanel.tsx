@@ -7,7 +7,7 @@ import {useTheme} from '@grafana/ui';
 import {PanelProps} from '@grafana/data';
 import {SimpleOptions} from 'types';
 
-import {filterDataForSunburst} from './utils';
+import {filterDataForSunburst,} from './utils';
 
 ReactFC.fcRoot(FusionCharts, PowerCharts, FusionTheme);
 
