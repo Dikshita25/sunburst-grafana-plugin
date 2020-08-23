@@ -3,24 +3,24 @@ import ReactFC from 'react-fusioncharts';
 import FusionCharts from 'fusioncharts';
 import PowerCharts from 'fusioncharts/fusioncharts.powercharts';
 import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
-import {useTheme} from '@grafana/ui';
-import {PanelProps} from '@grafana/data';
-import {SimpleOptions} from 'types';
+import { useTheme, stylesFactory } from '@grafana/ui';
+import { PanelProps } from '@grafana/data';
+import { SimpleOptions } from 'types';
 
-import {filterDataForSunburst,} from './utils';
+import { filterDataForSunburst } from './utils';
 
 ReactFC.fcRoot(FusionCharts, PowerCharts, FusionTheme);
-
 
 interface Props extends PanelProps<SimpleOptions> {}
 
 export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) => {
   const theme = useTheme();
+  const styles = getStyles();
   const dataSource = {
     chart: {
       showplotborder: '1',
       theme: 'fusion',
-      bgColor: theme.isLight ? '#FFFFFF' : '#000000'
+      bgColor: theme.isLight ? '#FFFFFF' : '#000000',
     },
     data: filterDataForSunburst(data),
     styles: {
@@ -45,5 +45,13 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
     return <ReactFC type="sunburst" width={width} height={height} dataFormat="JSON" dataSource={dataSource} />;
   }
 
-  return <p style={{textAlign: 'center'}}>No data found</p>
+  return <p className={styles.textCenter}>No data found</p>;
 };
+
+const getStyles = stylesFactory(() => {
+  return {
+    textCenter: css`
+      text-align: center;
+    `,
+  };
+});
