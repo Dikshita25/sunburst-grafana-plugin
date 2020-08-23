@@ -86,7 +86,7 @@ The first id, in this case i.e '0.0' be the parent or center of the graph, havin
 Now, lets move to its children, which are items having names with Asia, Africa, Europe, America having similar structure as the first one, but with parent = '0.0' which is ideally the id of the parent. So yes, that's the way we link the children with the parent. And you may further link the level-2 children with level-1 and go on...
 Here's the reference of the sunburst chart
 
-![Sunburst chart](/src/img/sunburstchart.png)
+![Sunburst chart](https://res.cloudinary.com/dtliuizjh/image/upload/v1598199576/sunburstchart_a1xetd.png)
 
 ### Now, lets see how to query the data on Grafana dashboard after importing the above data into the database
 So the above chart can be used using the time-filter in-order to plot, so just add a panel. Select the sunburst graph and add the query. Something like:
