@@ -6,26 +6,16 @@
     "description": "Plugin for sunburst graphs",
     "author": {
       "name": "Dikshita25",
-      "url": ""
+      "url": "https://github.com/Dikshita25/sunburst-grafana-plugin"
     },
     "keywords": [],
     "logos": {
       "small": "img/logo.svg",
       "large": "img/logo.svg"
     },
-    "links": [
-      {
-        "name": "Website",
-        "url": "https://github.com/grafana/simple-react-panel"
-      },
-      {
-        "name": "License",
-        "url": "https://github.com/grafana/simple-react-panel/blob/master/LICENSE"
-      }
-    ],
     "screenshots": [],
     "version": "1.0.1",
-    "updated": "%TODAY%"
+    "updated": "2020-08-25"
   },
   "dependencies": {
     "grafanaVersion": "6.3.x",
