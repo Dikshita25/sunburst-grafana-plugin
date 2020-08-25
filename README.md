@@ -73,7 +73,7 @@ So the above chart can be used using the time-filter in-order to plot, so just a
 `` Select * from <Measurement>``
 
 #### And here's the view of the sunburst chart with the above data: 
-![World population chart](./src/img/world_sunburst.png)
+![World population chart](https://ibb.co/qps3tYy)
 
 **Note:** Format to be used should be "Time series"
 And there you go, having your data to be plotted in sunburst style.
