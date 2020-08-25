@@ -71,6 +71,10 @@ Here's the reference of the sunburst chart
 ### Now, lets see how to query the data on Grafana dashboard after importing the above data into the database
 So the above chart can be used using the time-filter in-order to plot, so just add a panel. Select the sunburst graph and add the query. Something like:
 `` Select * from <Measurement>``
+
+And here's the view of the sunburst chart with the above data 
+![World population chart](./src/img/world_sunburst.png)
+
 **Note:** Format to be used should be "Time series"
 And there you go, having your data to be plotted in sunburst style.
 We have used fusion charts to plot the sunburst graph you may further change the style depending on the need or requirement for more reference, refer to the[Fusion charts](https://www.fusioncharts.com/charts/sunburst-charts/simple-sunburst-chart?framework=javascript).
