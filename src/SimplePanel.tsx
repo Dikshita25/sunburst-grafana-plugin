@@ -6,7 +6,7 @@ import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 import { useTheme, stylesFactory } from '@grafana/ui';
 import { PanelProps } from '@grafana/data';
 import { SimpleOptions } from 'types';
-
+import { css } from 'emotion';
 import { filterDataForSunburst } from './utils';
 
 ReactFC.fcRoot(FusionCharts, PowerCharts, FusionTheme);
