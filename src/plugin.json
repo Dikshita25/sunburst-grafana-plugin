@@ -1,7 +1,7 @@
 {
   "type": "panel",
   "name": "sunburst",
-  "id": "sunburst-sunburst",
+  "id": "sunburst-grafana-panel",
   "info": {
     "description": "Plugin for sunburst graphs",
     "author": {
