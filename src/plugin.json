@@ -24,7 +24,7 @@
       }
     ],
     "screenshots": [],
-    "version": "%VERSION%",
+    "version": "1.0.1",
     "updated": "%TODAY%"
   },
   "dependencies": {
