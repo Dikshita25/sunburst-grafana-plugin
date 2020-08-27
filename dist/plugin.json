@@ -1,7 +1,7 @@
 {
   "type": "panel",
   "name": "sunburst",
-  "id": "dikshitashirodkar25-sunburst-grafana-panel",
+  "id": "dikshitashirodkar25-sunburst-panel",
   "info": {
     "description": "Plugin for sunburst graphs",
     "author": {
