@@ -13,31 +13,31 @@ Here's a example, which we will further understand:
     "id": "0.0",
     "parent": "",
     "name": "The World",
-    "value": 7542011839
+    "count": 7542011839
   },
   {
     "id": "1.3",
     "parent": "0.0",
     "name": "Asia",
-    "value": 4503248822
+    "count": 4503248822
   },
   {
     "id": "1.1",
     "parent": "0.0",
     "name": "Africa",
-    "value": 1256268025
+    "count": 1256268025
   },
   {
     "id": "1.2",
     "parent": "0.0",
     "name": "America",
-    "value": 1006801064
+    "count": 1006801064
   },
   {
     "id": "1.4",
     "parent": "0.0",
     "name": "Europe",
-    "value": 743253404
+    "count": 743253404
   }
 ]
 ```
@@ -48,7 +48,7 @@ The first id, in this case i.e '0.0' be the parent or center of the graph, havin
   "id": "0.0",
   "parent": "",
   "name": "The World",
-  "value": 7542011839
+  "count": 7542011839
 }
 ```
 **Note:** The center or the parent won't have any parent linked to it, hence has a empty value in it
@@ -59,14 +59,14 @@ Here's the reference of the sunburst chart
 ![Sunburst chart](https://res.cloudinary.com/dtliuizjh/image/upload/v1598199576/sunburstchart_a1xetd.png)
 
 ### Now, lets see how to query the data on Grafana dashboard after importing the above data into the database
-So the above chart can be used using the time-filter in-order to plot, so just add a panel. Select the sunburst graph and add the query. Something like:
+So the above chart can be used using any format in-order to plot (time series or table), so just add a panel. Select the sunburst graph and add the query. Something like:
 `` Select * from <Measurement>``
 
 #### And here's the view of the sunburst chart with the above data: 
-![World population chart](https://res.cloudinary.com/dtliuizjh/image/upload/v1598371900/2020-08-25_ouoxfp.png)
+![World population chart](https://res.cloudinary.com/dtliuizjh/image/upload/v1598371900/2020-08-25_ouoxfp.png), for more reference the data needs to be in the below format:
+![Static Sample Data](https://res.cloudinary.com/drgawxlgf/image/upload/v1598881232/Screenshot_2020-08-31_at_7.04.53_PM_rebhbc.png)
 
-**Note:** Format to be used should be "Time series"
 And there you go, having your data to be plotted in sunburst style.
 We have used fusion charts to plot the sunburst graph you may further change the style depending on the need or requirement for more reference, refer to the[Fusion charts](https://www.fusioncharts.com/charts/sunburst-charts/simple-sunburst-chart?framework=javascript).
-
 Thanks for reading!!
+

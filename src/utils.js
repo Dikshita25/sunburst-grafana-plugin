@@ -31,17 +31,30 @@ const createStructuredDataForSunburst = (dataTobeIterateOn, finalData, startInde
  * @param {*} data 
  */
 export const filterDataForSunburst = (data) => {
-  const allColumnsData = data.series.reduce((soFar, value) => {
-    const nameSplit = value.name.split('.');
-    const name = nameSplit.length === 2 ? nameSplit[1] : nameSplit[0];
-    soFar.push({
-      name: name,
-      values: value.fields[1].values,
-    });
-
-    return soFar;
-  }, []);
-
+  const notSeriesData = data.series.length === 1 ? true : false;
+  let allColumnsData = null
+  if (notSeriesData) {
+    const fields = data.series.length ? data.series[0].fields : [];
+    allColumnsData = fields.reduce((soFar, value) => {
+      const nameSplit = value.name.split('.');
+      const name = nameSplit.length === 2 ? nameSplit[1] : nameSplit[0];
+      soFar.push({
+        name: name,
+        values: value.values,
+      });
+      return soFar;
+    }, [])
+  } else {
+    allColumnsData = data.series.reduce((soFar, value) => {
+      const nameSplit = value.name.split('.');
+      const name = nameSplit.length === 2 ? nameSplit[1] : nameSplit[0];
+      soFar.push({
+        name: name,
+        values: value.fields[1].values,
+      });
+      return soFar;
+    }, []);
+  }
   const endIndex = allColumnsData.length ? allColumnsData[0].values.length : 0;
   return createStructuredDataForSunburst(allColumnsData, [], 0, endIndex);
 };
