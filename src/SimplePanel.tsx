@@ -4,7 +4,7 @@ import FusionCharts from 'fusioncharts';
 import PowerCharts from 'fusioncharts/fusioncharts.powercharts';
 import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 import { useTheme, stylesFactory } from '@grafana/ui';
-import { PanelProps } from '@grafana/data';
+import { PanelProps, getNamedColorPalette, getColorForTheme } from '@grafana/data';
 import { SimpleOptions } from 'types';
 import { css } from 'emotion';
 import { filterDataForSunburst } from './utils';
@@ -16,11 +16,17 @@ interface Props extends PanelProps<SimpleOptions> {}
 export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) => {
   const theme = useTheme();
   const styles = getStyles();
+  const palette = getThemePalette(theme);
   const dataSource = {
     chart: {
       showplotborder: '1',
-      theme: 'fusion',
-      bgColor: theme.isLight ? '#FFFFFF' : '#000000',
+      bgAlpha: '100',
+      bgColor: theme.colors.bg1,
+      paletteColors: palette.join(','),
+      baseFont: theme.typography.fontFamily.monospace,
+      baseFontSize: 12,
+      baseFontColor: theme.palette.white,
+      borderThickness: '0',
     },
     data: filterDataForSunburst(data),
     styles: {
@@ -55,3 +61,11 @@ const getStyles = stylesFactory(() => {
     `,
   };
 });
+
+const getThemePalette = (theme: any): string[] => {
+  const colors: string[] = [];
+  for (let entry of getNamedColorPalette()) {
+    colors.push(getColorForTheme(entry[1][0], theme.type));
+  }
+  return colors;
+};
