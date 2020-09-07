@@ -27,6 +27,7 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
       baseFontSize: 12,
       baseFontColor: theme.palette.white,
       borderThickness: '0',
+      toolTipColor: '#000000',
     },
     data: filterDataForSunburst(data),
     styles: {
