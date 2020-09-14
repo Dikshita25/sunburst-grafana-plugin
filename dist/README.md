@@ -1,5 +1,7 @@
 # Grafana Sunburst Plugin
+
 This plugin plots sunburst chart with the data required passsed into it.
+
 ## What is Sunburst Chart?
 Sunburst chart is a multi-level Pie Chart, and Radial Treemap — is typically used to visualize hierarchical data structures. A Sunburst Chart consists of an inner circle surrounded by rings of deeper hierarchy levels.
 
@@ -68,4 +70,3 @@ So the above chart can be used using any format in-order to plot (time series or
 And there you go, having your data to be plotted in sunburst style.
 We have used fusion charts to plot the sunburst graph you may further change the style depending on the need or requirement for more reference, refer to the[Fusion charts](https://www.fusioncharts.com/charts/sunburst-charts/simple-sunburst-chart?framework=javascript).
 
-Thanks for reading!!

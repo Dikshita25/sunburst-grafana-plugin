@@ -8,11 +8,8 @@ import { PanelProps, getNamedColorPalette, getColorForTheme } from '@grafana/dat
 import { SimpleOptions } from 'types';
 import { css } from 'emotion';
 import { filterDataForSunburst } from './utils';
-
 ReactFC.fcRoot(FusionCharts, PowerCharts, FusionTheme);
-
 interface Props extends PanelProps<SimpleOptions> {}
-
 export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) => {
   const theme = useTheme();
   const styles = getStyles();
@@ -46,13 +43,51 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
       ],
     },
   };
-
   // If there is data then render the sunburst chart.
   if (dataSource.data.length) {
-    return <ReactFC type="sunburst" width={width} height={height} dataFormat="JSON" dataSource={dataSource} />;
-  }
+    const colors = getColor(dataSource.data, palette);
 
+    return (
+      <div style={{ height, width }}>
+        <ReactFC type="sunburst" height={height} width={width - 100} dataFormat="JSON" dataSource={dataSource} />
+        <div className={styles.legends}>
+          {dataSource.data.map(item => {
+            return (
+              <div className={styles.legendItem}>
+                <div className={styles.colorBlock} style={{ backgroundColor: colors[item.id] }}></div>
+                {item.name}: {item.value}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
   return <p className={styles.textCenter}>No data found</p>;
+};
+const getColor = (data, colorPlattets) => {
+  const result = {};
+  const parentItem = data.find(item => {
+    return !item.parent;
+  });
+  const childrens = data
+    .filter(item => {
+      return item.parent === parentItem.id;
+    })
+    .sort((a, b) => Number(b.value) - Number(a.value));
+  childrens.forEach((item, itemIndex) => {
+    result[item.id] = colorPlattets[itemIndex + 1];
+  });
+
+  data.forEach((item, index) => {
+    if (item.parent && !result[item.id]) {
+      result[item.id] = result[item.parent];
+    }
+  });
+
+  result[parentItem.id] = colorPlattets[0];
+
+  return result;
 };
 
 const getStyles = stylesFactory(() => {
@@ -60,9 +95,26 @@ const getStyles = stylesFactory(() => {
     textCenter: css`
       text-align: center;
     `,
+    legends: css`
+      position: absolute;
+      right: 20px;
+      top: 10%;
+      font-size: 12px;
+      font-family: monospace;
+    `,
+    colorBlock: css`
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      margin: 4px;
+    `,
+    legendItem: css`
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    `,
   };
 });
-
 const getThemePalette = (theme: any): string[] => {
   const colors: string[] = [];
   for (let entry of getNamedColorPalette()) {
